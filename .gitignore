@@ -1,0 +1,16 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/AzurePlayArea.BL/bin/Debug
+/AzurePlayArea.BL/obj/Debug
+/AzurePlayArea.Data/bin/Debug
+/AzurePlayArea.Data/obj/Debug
+/packages
+/ProductDB/obj/Debug
+/ProductDB/bin/Debug
+/QueueListener/bin/Debug
+/QueueListener/obj/Debug
+/AzurePlayArea/obj/Debug
+/AzurePlayArea/bin
