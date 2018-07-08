@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzurePlayArea", "MVC_WebApplication\AzurePlayArea.csproj", "{53739C7C-1DBA-4013-9A18-EABAEE60C5FB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzurePlayArea", "AzurePlayArea\AzurePlayArea.csproj", "{53739C7C-1DBA-4013-9A18-EABAEE60C5FB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzurePlayArea.Data", "MVC_WebApplication.Data\AzurePlayArea.Data.csproj", "{C3859D0E-EEE7-42D0-B5BF-91EFE80399FF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzurePlayArea.Data", "AzurePlayArea.Data\AzurePlayArea.Data.csproj", "{C3859D0E-EEE7-42D0-B5BF-91EFE80399FF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzurePlayArea.BL", "MVC_WebApplication.BL\AzurePlayArea.BL.csproj", "{7FC53B9D-6D85-4849-B502-9A7839251596}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzurePlayArea.BL", "AzurePlayArea.BL\AzurePlayArea.BL.csproj", "{7FC53B9D-6D85-4849-B502-9A7839251596}"
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "ProductDB", "ProductDB\ProductDB.sqlproj", "{D29E8F6D-1159-4567-A3C9-3D081AD6E62F}"
 EndProject

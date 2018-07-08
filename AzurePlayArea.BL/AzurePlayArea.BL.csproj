@@ -73,7 +73,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MVC_WebApplication.Data\AzurePlayArea.Data.csproj">
+    <ProjectReference Include="..\AzurePlayArea.Data\AzurePlayArea.Data.csproj">
       <Project>{C3859D0E-EEE7-42D0-B5BF-91EFE80399FF}</Project>
       <Name>AzurePlayArea.Data</Name>
     </ProjectReference>
