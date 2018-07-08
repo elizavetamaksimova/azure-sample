@@ -24,62 +24,17 @@ namespace AzurePlayArea.Data.DataAccess
 
         public string Upload(byte[] file, string fileName)
         {
-            return TestUpload(file, fileName);
+            return SimpleUpload(file, fileName);
         }
 
-        public string TestUpload(byte[] file, string fileName)
-        {
-            CloudBlobContainer cloudBlobContainer = GetContainerReference();
-            CloudBlockBlob blob = cloudBlobContainer.GetBlockBlobReference(Path.GetFileName(fileName));
-
-            blob.DeleteIfExists();
-
-            var blockIDs = new ConcurrentBag<string>();
-
-            int blockSize = 1 * 512 * 1024;
-
-            int fileSize = file.Length;
-            int tasksCount = (int)Math.Ceiling((double)fileSize / blockSize);
-            var tasks = new Task[tasksCount];
-            for (int i = 0; i < tasksCount; i++)
-            {
-                tasks[i] = Task.Factory.StartNew(blockId =>
-                {
-                    int byteIdx = (int)blockId * blockSize;
-                    int blockLength = Math.Min(blockSize, fileSize - byteIdx);
-
-                    byte[] bytesToUpload = new byte[blockLength];
-                    Array.Copy(file, byteIdx, bytesToUpload, 0, blockLength);
-
-                    var blockIdEncoded = Convert.ToBase64String(BitConverter.GetBytes((int)blockId));
-
-                    using (MemoryStream memoryStream = new MemoryStream(bytesToUpload, 0, blockLength))
-                    {
-                        lock (blob)
-                        {
-                            blockIDs.Add(blockId.ToString());
-                            blob.PutBlock(blockIdEncoded, memoryStream, null, null, new BlobRequestOptions
-                            {
-                                RetryPolicy = new ExponentialRetry(TimeSpan.FromSeconds(2), 1)
-                            });
-                        }
-                    }
-
-                }, i);
-            }
-            Task.WaitAll(tasks);
-
-            blob.PutBlockList(blockIDs);
-
-            return blob.StorageUri.PrimaryUri.ToString();
-        }
-
-        public void SimpleUpload(byte[] file, string fileName)
+        public string SimpleUpload(byte[] file, string fileName)
         {
             CloudBlobContainer container = GetContainerReference();
             CloudBlockBlob blockBlob = container.GetBlockBlobReference(fileName);
 
             blockBlob.UploadFromByteArray(file, 0, file.Length);
+
+            return blockBlob.Uri.ToString();
         }
 
         public string UploadFileInBlocksWithOptions(byte[] file, string fileName)
